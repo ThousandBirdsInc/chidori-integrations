@@ -1,0 +1,31 @@
+{
+  "name": "@chidori/integrations-replicate",
+  "version": "0.1.0",
+  "description": "Replicate prediction tools for Chidori TypeScript agents.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": ["dist", "src", "README.md"],
+  "scripts": {
+    "build": "tsc -b",
+    "typecheck": "tsc -b"
+  },
+  "dependencies": {
+    "@chidori/integrations-core": "0.1.0"
+  },
+  "peerDependencies": {
+    "chidori": ">=3.0.0"
+  },
+  "peerDependenciesMeta": {
+    "chidori": {
+      "optional": true
+    }
+  }
+}

@@ -1,0 +1,60 @@
+# @chidori/integrations-vectorstores
+
+Chidori tools for vector databases.
+
+Exports:
+
+- `pineconeUpsertTool`
+- `pineconeQueryTool`
+- `pineconeEmbeddingsTool`
+- `pineconeRerankTool`
+- `qdrantUpsertTool`
+- `qdrantSearchTool`
+- `weaviateBatchObjectsTool`
+- `weaviateGraphQLTool`
+- `milvusInsertTool`
+- `milvusSearchTool`
+- `chromaUpsertTool`
+- `chromaQueryTool`
+- `mongoAtlasVectorSearchTool`
+- `upstashVectorUpsertTool`
+- `upstashVectorQueryTool`
+- `cloudflareVectorizeUpsertTool`
+- `cloudflareVectorizeQueryTool`
+- `azureAiSearchUploadTool`
+- `azureAiSearchVectorSearchTool`
+- `azionEdgeSqlVectorsAddTool`
+- `azionEdgeSqlVectorSearchTool`
+- `azionEdgeSqlDeleteTool`
+- `elasticsearchIndexDocumentTool`
+- `elasticsearchKnnSearchTool`
+- `opensearchIndexDocumentTool`
+- `opensearchKnnSearchTool`
+- `clickHouseInsertTool`
+- `clickHouseVectorSearchTool`
+- `clickHouseDeleteTool`
+- `azureCosmosDbNoSqlDocumentUpsertTool`
+- `azureCosmosDbNoSqlQueryTool`
+- `azureCosmosDbNoSqlDocumentDeleteTool`
+- `turbopufferWriteTool`
+- `turbopufferQueryTool`
+- `rocksetQueryTool`
+- `rocksetDocumentsAddTool`
+- `rocksetDocumentsDeleteTool`
+- `typesenseDocumentsImportTool`
+- `typesenseVectorSearchTool`
+- `supabaseVectorUpsertTool`
+- `supabaseVectorMatchTool`
+- `astraDbInsertManyTool`
+- `astraDbFindTool`
+- `vectaraDocumentIndexTool`
+- `vectaraCorpusQueryTool`
+- `xataVectorsAddTool`
+- `xataVectorSearchTool`
+- `couchbaseSearchQueryTool`
+- `couchbaseQueryExecuteTool`
+- `meilisearchDocumentsAddTool`
+- `meilisearchSearchTool`
+- `vespaDocumentPutTool`
+- `vespaQueryTool`
+- `vectorStoreTools`

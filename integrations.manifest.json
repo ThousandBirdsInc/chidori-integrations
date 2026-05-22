@@ -1,0 +1,2107 @@
+{
+  "$schema": "https://chidori.dev/schemas/integrations-manifest.v1.json",
+  "integrationCategories": [
+    "chat_models",
+    "llms",
+    "embedding_models",
+    "tools_and_toolkits",
+    "document_loaders",
+    "vector_stores",
+    "retrievers",
+    "text_splitters",
+    "document_transformers",
+    "sandboxes"
+  ],
+  "packages": [
+    {
+      "name": "@chidori/integrations-core",
+      "path": "packages/core",
+      "status": "alpha",
+      "exports": [
+        "defineTool",
+        "requestJson",
+        "resolveSecret",
+        "withQuery"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-openai",
+      "path": "packages/openai",
+      "status": "alpha",
+      "categories": [
+        "chat_models",
+        "llms",
+        "embedding_models",
+        "tools_and_toolkits"
+      ],
+      "providers": [
+        "OpenAI",
+        "OpenAI-compatible"
+      ],
+      "tools": [
+        "openai_responses_create",
+        "openai_embeddings_create",
+        "openai_images_generate"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-anthropic",
+      "path": "packages/anthropic",
+      "status": "alpha",
+      "categories": [
+        "chat_models"
+      ],
+      "providers": [
+        "Anthropic"
+      ],
+      "tools": [
+        "anthropic_messages_create"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-google",
+      "path": "packages/google",
+      "status": "alpha",
+      "categories": [
+        "chat_models",
+        "embedding_models"
+      ],
+      "providers": [
+        "Google Gemini",
+        "Google Vertex AI",
+        "Google Places",
+        "Google Routes",
+        "YouTube",
+        "Google Cloud Text-to-Speech",
+        "Google Calendar",
+        "Gmail"
+      ],
+      "tools": [
+        "google_gemini_generate_content",
+        "google_gemini_embed_content",
+        "google_vertex_generate_content",
+        "google_places_text_search",
+        "google_routes_compute",
+        "google_youtube_search",
+        "google_text_to_speech_synthesize",
+        "google_text_to_speech_voices_list",
+        "google_calendar_events_list",
+        "google_calendar_event_insert",
+        "google_gmail_messages_list",
+        "google_gmail_message_get",
+        "google_gmail_message_send",
+        "google_gmail_draft_create",
+        "google_gmail_thread_get"
+      ],
+      "sources": [
+        "https://developers.google.com/youtube/v3/docs/search/list",
+        "https://docs.cloud.google.com/text-to-speech/docs/reference/rest/v1/text/synthesize",
+        "https://docs.cloud.google.com/text-to-speech/docs/reference/rest/v1/voices/list"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-aws",
+      "path": "packages/aws",
+      "status": "alpha",
+      "categories": [
+        "chat_models",
+        "llms",
+        "tools_and_toolkits",
+        "retrievers"
+      ],
+      "providers": [
+        "AWS Bedrock",
+        "AWS Bedrock Knowledge Bases",
+        "Amazon Kendra",
+        "AWS Step Functions",
+        "AWS SageMaker",
+        "AWS Lambda"
+      ],
+      "tools": [
+        "aws_bedrock_invoke_model",
+        "aws_bedrock_converse",
+        "aws_bedrock_knowledge_base_retrieve",
+        "aws_bedrock_knowledge_base_retrieve_and_generate",
+        "aws_kendra_retrieve",
+        "aws_kendra_query",
+        "aws_stepfunctions_start_execution",
+        "aws_stepfunctions_describe_execution",
+        "aws_stepfunctions_send_task_success",
+        "aws_sagemaker_invoke_endpoint",
+        "aws_lambda_invoke"
+      ],
+      "sources": [
+        "https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent-runtime_Retrieve.html",
+        "https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent-runtime_RetrieveAndGenerate.html",
+        "https://docs.aws.amazon.com/kendra/latest/APIReference/API_Retrieve.html",
+        "https://docs.aws.amazon.com/kendra/latest/APIReference/API_Query.html",
+        "https://docs.aws.amazon.com/step-functions/latest/apireference/API_StartExecution.html",
+        "https://docs.aws.amazon.com/step-functions/latest/apireference/API_DescribeExecution.html",
+        "https://docs.aws.amazon.com/step-functions/latest/apireference/API_SendTaskSuccess.html",
+        "https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html"
+      ],
+      "notes": "Requires caller-provided SigV4 headers or an AWS-compatible proxy."
+    },
+    {
+      "name": "@chidori/integrations-microsoft",
+      "path": "packages/microsoft",
+      "status": "alpha",
+      "categories": [
+        "tools_and_toolkits",
+        "document_loaders"
+      ],
+      "providers": [
+        "Microsoft Graph",
+        "Office 365",
+        "Outlook",
+        "OneDrive"
+      ],
+      "tools": [
+        "microsoft_graph_request",
+        "microsoft_graph_messages_list",
+        "microsoft_graph_mail_send",
+        "microsoft_graph_calendar_events_list",
+        "microsoft_graph_calendar_event_create",
+        "microsoft_graph_drive_children_list"
+      ],
+      "sources": [
+        "https://learn.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0",
+        "https://learn.microsoft.com/en-us/graph/auth/auth-concepts",
+        "https://learn.microsoft.com/en-us/graph/api/user-sendmail?view=graph-rest-1.0"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-azure",
+      "path": "packages/azure",
+      "status": "alpha",
+      "categories": [
+        "chat_models",
+        "embedding_models",
+        "tools_and_toolkits",
+        "sandboxes"
+      ],
+      "providers": [
+        "Azure OpenAI",
+        "Azure Dynamic Sessions"
+      ],
+      "tools": [
+        "azure_openai_chat_completions_create",
+        "azure_openai_embeddings_create",
+        "azure_dynamic_sessions_execute",
+        "azure_dynamic_sessions_files_list"
+      ],
+      "sources": [
+        "https://learn.microsoft.com/en-us/azure/container-apps/sessions-code-interpreter",
+        "https://learn.microsoft.com/en-us/rest/api/containerapps/"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-cloudflare",
+      "path": "packages/cloudflare",
+      "status": "alpha",
+      "categories": [
+        "chat_models",
+        "llms"
+      ],
+      "providers": [
+        "Cloudflare Workers AI",
+        "Cloudflare AI Gateway"
+      ],
+      "tools": [
+        "cloudflare_ai_run",
+        "cloudflare_ai_gateway_chat_completions_create",
+        "cloudflare_ai_gateway_responses_create"
+      ],
+      "sources": [
+        "https://developers.cloudflare.com/ai-gateway/usage/rest-api/"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-aleph-alpha",
+      "path": "packages/aleph-alpha",
+      "status": "alpha",
+      "categories": [
+        "chat_models",
+        "llms",
+        "embedding_models"
+      ],
+      "providers": [
+        "Aleph Alpha",
+        "Pharia inference"
+      ],
+      "tools": [
+        "aleph_alpha_complete",
+        "aleph_alpha_chat",
+        "aleph_alpha_embeddings"
+      ],
+      "sources": [
+        "https://aleph-alpha-client.readthedocs.io/en/stable/_modules/aleph_alpha_client/aleph_alpha_client.html",
+        "https://aleph-alpha-client.readthedocs.io/en/stable/_modules/aleph_alpha_client/prompt.html",
+        "https://aleph-alpha-client.readthedocs.io/en/stable/_modules/aleph_alpha_client/chat.html"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-browser",
+      "path": "packages/browser",
+      "status": "alpha",
+      "categories": [
+        "tools_and_toolkits",
+        "document_loaders",
+        "sandboxes"
+      ],
+      "providers": [
+        "Browserbase"
+      ],
+      "tools": [
+        "browserbase_session_create",
+        "browserbase_sessions_list",
+        "browserbase_session_get",
+        "browserbase_session_close",
+        "browserbase_session_live_urls_get",
+        "browserbase_session_logs_list",
+        "browserbase_session_recording_get",
+        "browserbase_fetch",
+        "browserbase_search"
+      ],
+      "sources": [
+        "https://docs.browserbase.com/reference/api/create-a-session",
+        "https://docs.browserbase.com/reference/api/get-a-session",
+        "https://docs.browserbase.com/reference/api/session-live-urls",
+        "https://docs.browserbase.com/reference/api/session-logs",
+        "https://docs.browserbase.com/reference/api/session-recording",
+        "https://docs.browserbase.com/reference/api/fetch-a-page",
+        "https://docs.browserbase.com/platform/search/overview"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-neo4j",
+      "path": "packages/neo4j",
+      "status": "alpha",
+      "categories": [
+        "tools_and_toolkits",
+        "vector_stores",
+        "retrievers"
+      ],
+      "providers": [
+        "Neo4j"
+      ],
+      "tools": [
+        "neo4j_cypher_query",
+        "neo4j_schema_get",
+        "neo4j_vector_index_create",
+        "neo4j_vector_query",
+        "neo4j_documents_upsert"
+      ],
+      "sources": [
+        "https://neo4j.com/docs/query-api/current/",
+        "https://neo4j.com/docs/query-api/current/endpoints/",
+        "https://neo4j.com/docs/query-api/current/query-counters/",
+        "https://neo4j.com/docs/query-api/current/routing/",
+        "https://neo4j.com/docs/cypher-manual/current/indexes/semantic-indexes/vector-indexes"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-databricks",
+      "path": "packages/databricks",
+      "status": "alpha",
+      "categories": [
+        "chat_models",
+        "llms",
+        "embedding_models",
+        "vector_stores",
+        "retrievers"
+      ],
+      "providers": [
+        "Databricks Model Serving",
+        "Databricks Vector Search"
+      ],
+      "tools": [
+        "databricks_serving_endpoint_get",
+        "databricks_serving_invoke",
+        "databricks_chat_completions_create",
+        "databricks_completions_create",
+        "databricks_embeddings_create",
+        "databricks_vector_search_query",
+        "databricks_vector_search_next_page"
+      ],
+      "sources": [
+        "https://learn.microsoft.com/en-us/azure/databricks/machine-learning/foundation-model-apis/api-reference",
+        "https://docs.databricks.com/aws/en/machine-learning/model-serving/query-chat-models",
+        "https://docs.databricks.com/gcp/en/vector-search/query-vector-search"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-ai21",
+      "path": "packages/ai21",
+      "status": "alpha",
+      "categories": [
+        "chat_models",
+        "llms"
+      ],
+      "providers": [
+        "AI21"
+      ],
+      "tools": [
+        "ai21_chat_completions_create"
+      ],
+      "sources": [
+        "https://docs.ai21.com/reference/jamba-1-6-api-ref"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-baidu",
+      "path": "packages/baidu",
+      "status": "alpha",
+      "categories": [
+        "chat_models",
+        "embedding_models"
+      ],
+      "providers": [
+        "Baidu Qianfan"
+      ],
+      "tools": [
+        "baidu_qianfan_access_token_create",
+        "baidu_qianfan_chat_completions_create",
+        "baidu_qianfan_embeddings_create"
+      ],
+      "sources": [
+        "https://qianfan.readthedocs.io/en/stable/qianfan.html",
+        "https://ai.baidu.com/ai-doc/WENXINWORKSHOP/plx2p4w8z"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-cohere",
+      "path": "packages/cohere",
+      "status": "alpha",
+      "categories": [
+        "chat_models",
+        "embedding_models",
+        "retrievers"
+      ],
+      "providers": [
+        "Cohere"
+      ],
+      "tools": [
+        "cohere_chat_create",
+        "cohere_embed",
+        "cohere_rerank"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-contextual",
+      "path": "packages/contextual",
+      "status": "alpha",
+      "categories": [
+        "retrievers",
+        "document_transformers"
+      ],
+      "providers": [
+        "Contextual AI"
+      ],
+      "tools": [
+        "contextual_rerank"
+      ],
+      "sources": [
+        "https://docs.contextual.ai/api-reference/rerank/rerank",
+        "https://docs.contextual.ai/how-to-guides/rerank"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-ibm",
+      "path": "packages/ibm",
+      "status": "alpha",
+      "categories": [
+        "chat_models",
+        "llms",
+        "embedding_models",
+        "retrievers"
+      ],
+      "providers": [
+        "IBM watsonx.ai"
+      ],
+      "tools": [
+        "ibm_watsonx_chat",
+        "ibm_watsonx_embeddings"
+      ],
+      "sources": [
+        "https://www.ibm.com/docs/en/watsonx/saas?topic=code-chat",
+        "https://dataplatform.cloud.ibm.com/docs/content/wsj/analyze-data/fm-api-embed.html?context=wx"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-voyage",
+      "path": "packages/voyage",
+      "status": "alpha",
+      "categories": [
+        "embedding_models",
+        "retrievers"
+      ],
+      "providers": [
+        "Voyage AI"
+      ],
+      "tools": [
+        "voyage_embeddings_create",
+        "voyage_rerank"
+      ],
+      "sources": [
+        "https://docs.voyageai.com/docs/embeddings",
+        "https://docs.voyageai.com/docs/reranker"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-jina",
+      "path": "packages/jina",
+      "status": "alpha",
+      "categories": [
+        "embedding_models",
+        "retrievers",
+        "document_transformers"
+      ],
+      "providers": [
+        "Jina"
+      ],
+      "tools": [
+        "jina_embeddings_create",
+        "jina_rerank"
+      ],
+      "sources": [
+        "https://jina.ai/en-US/embeddings/",
+        "https://jina.ai/en-US/reranker/"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-mixedbread",
+      "path": "packages/mixedbread",
+      "status": "alpha",
+      "categories": [
+        "retrievers",
+        "document_transformers"
+      ],
+      "providers": [
+        "Mixedbread AI"
+      ],
+      "tools": [
+        "mixedbread_rerank"
+      ],
+      "sources": [
+        "https://www.mixedbread.com/api-reference/endpoints/reranking/rerank-documents"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-nomic",
+      "path": "packages/nomic",
+      "status": "alpha",
+      "categories": [
+        "embedding_models"
+      ],
+      "providers": [
+        "Nomic"
+      ],
+      "tools": [
+        "nomic_text_embeddings_create"
+      ],
+      "sources": [
+        "https://www.nomic.ai/blog/posts/nomic-embed-text-v1",
+        "https://home.nomic.ai/embed"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-mistral",
+      "path": "packages/mistral",
+      "status": "alpha",
+      "categories": [
+        "chat_models",
+        "embedding_models"
+      ],
+      "providers": [
+        "Mistral"
+      ],
+      "tools": [
+        "mistral_chat_completions_create",
+        "mistral_embeddings_create"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-groq",
+      "path": "packages/groq",
+      "status": "alpha",
+      "categories": [
+        "chat_models"
+      ],
+      "providers": [
+        "Groq"
+      ],
+      "tools": [
+        "groq_chat_completions_create"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-openrouter",
+      "path": "packages/openrouter",
+      "status": "alpha",
+      "categories": [
+        "chat_models"
+      ],
+      "providers": [
+        "OpenRouter"
+      ],
+      "tools": [
+        "openrouter_chat_completions_create"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-openai-compatible",
+      "path": "packages/openai-compatible",
+      "status": "alpha",
+      "categories": [
+        "chat_models",
+        "llms",
+        "embedding_models"
+      ],
+      "providers": [
+        "xAI",
+        "Fireworks AI",
+        "Together AI",
+        "Perplexity",
+        "DeepSeek",
+        "Hugging Face",
+        "DeepInfra",
+        "ZhipuAI",
+        "Moonshot AI",
+        "DashScope/Tongyi",
+        "Tencent Hunyuan",
+        "ByteDance Volcengine/Doubao",
+        "MiniMax",
+        "Novita AI",
+        "Friendli",
+        "SambaNova",
+        "PremAI",
+        "Upstage",
+        "GitHub Models",
+        "Cerebras",
+        "NVIDIA NIM"
+      ],
+      "tools": [
+        "xai_chat_completions_create",
+        "fireworks_chat_completions_create",
+        "fireworks_completions_create",
+        "fireworks_embeddings_create",
+        "together_chat_completions_create",
+        "together_completions_create",
+        "together_embeddings_create",
+        "together_rerank",
+        "perplexity_responses_create",
+        "deepseek_chat_completions_create",
+        "huggingface_chat_completions_create",
+        "huggingface_embeddings_create",
+        "deepinfra_chat_completions_create",
+        "deepinfra_embeddings_create",
+        "zhipuai_chat_completions_create",
+        "zhipuai_embeddings_create",
+        "moonshot_chat_completions_create",
+        "dashscope_chat_completions_create",
+        "dashscope_embeddings_create",
+        "tencent_hunyuan_chat_completions_create",
+        "tencent_hunyuan_embeddings_create",
+        "volcengine_doubao_chat_completions_create",
+        "volcengine_doubao_embeddings_create",
+        "volcengine_doubao_responses_create",
+        "minimax_chat_completions_create",
+        "minimax_embeddings_create",
+        "novita_chat_completions_create",
+        "friendli_chat_completions_create",
+        "sambanova_chat_completions_create",
+        "sambanova_completions_create",
+        "sambanova_embeddings_create",
+        "premai_chat_completions_create",
+        "premai_embeddings_create",
+        "upstage_chat_completions_create",
+        "upstage_embeddings_create",
+        "github_models_chat_completions_create",
+        "github_models_embeddings_create",
+        "cerebras_chat_completions_create",
+        "nvidia_nim_chat_completions_create",
+        "nvidia_nim_embeddings_create",
+        "nvidia_nim_responses_create"
+      ],
+      "sources": [
+        "https://docs.x.ai/developers/model-capabilities/legacy/chat-completions",
+        "https://docs.fireworks.ai/api-reference/post-chatcompletions",
+        "https://docs.fireworks.ai/api-reference/post-completions",
+        "https://docs.fireworks.ai/api-reference/creates-an-embedding-vector-representing-the-input-text",
+        "https://docs.together.ai/docs/inference/openai-compatibility",
+        "https://docs.together.ai/reference/completions",
+        "https://docs.together.ai/reference/rerank",
+        "https://docs.perplexity.ai/docs/agent-api/openai-compatibility",
+        "https://api-docs.deepseek.com/",
+        "https://huggingface.co/docs/huggingface_hub/en/guides/inference",
+        "https://huggingface.co/docs/inference-providers/main/tasks/feature-extraction",
+        "https://docs.deepinfra.com/chat/overview",
+        "https://docs.deepinfra.com/api-reference/introduction",
+        "https://docs.bigmodel.cn/api-reference",
+        "https://docs.bigmodel.cn/api-reference/%E6%A8%A1%E5%9E%8B-api/%E6%96%87%E6%9C%AC%E5%B5%8C%E5%85%A5",
+        "https://platform.kimi.ai/docs/api/overview",
+        "https://www.alibabacloud.com/help/doc-detail/3016807.html",
+        "https://www.alibabacloud.com/help/doc-detail/2712515.html",
+        "https://cloud.tencent.com/document/product/1729/111007",
+        "https://www.volcengine.com/docs/6559/2310290",
+        "https://platform.minimax.io/docs/api-reference/text-chat",
+        "https://platform.minimax.io/docs/api-reference/text-openai-api",
+        "https://novita.ai/docs/api-reference",
+        "https://novita.ai/docs/api-reference/model-apis-llm-create-chat-completion",
+        "https://docs.friendli.ai/openapi/serverless-endpoints/chat-completions",
+        "https://docs.friendli.ai/guides/quickstart/openai-compatibility",
+        "https://docs.sambanova.ai/docs/api-reference/chat-completions/create-chat-based-completion",
+        "https://docs.sambanova.ai/docs/api-reference/completions/create-completion",
+        "https://docs.sambanova.ai/docs/api-reference/embeddings/create-embeddings",
+        "https://docs.premai.io/api-reference/chat-completions",
+        "https://docs.premai.io/get-started/sdks",
+        "https://console.upstage.ai/api-keys?api=chat-reasoning",
+        "https://qdrant.tech/documentation/embeddings/upstage/",
+        "https://docs.github.com/en/rest/models/inference",
+        "https://docs.github.com/en/rest/models/embeddings",
+        "https://inference-docs.cerebras.ai/api-reference/chat-completions",
+        "https://docs.nvidia.com/nim/large-language-models/latest/reference/api-reference.html"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-writer",
+      "path": "packages/writer",
+      "status": "alpha",
+      "categories": [
+        "chat_models",
+        "llms"
+      ],
+      "providers": [
+        "Writer"
+      ],
+      "tools": [
+        "writer_chat_create"
+      ],
+      "sources": [
+        "https://dev.writer.com/api-guides/api-reference/completion-api/chat-completion",
+        "https://dev.writer.com/api-guides/chat-completion"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-yandex",
+      "path": "packages/yandex",
+      "status": "alpha",
+      "categories": [
+        "chat_models",
+        "llms",
+        "embedding_models"
+      ],
+      "providers": [
+        "Yandex Cloud AI Studio",
+        "Yandex Foundation Models"
+      ],
+      "tools": [
+        "yandex_foundation_completion_create",
+        "yandex_foundation_text_embedding_create"
+      ],
+      "sources": [
+        "https://yandex.cloud/en/docs/foundation-models/text-generation/api-ref/",
+        "https://aistudio.yandex.ru/docs/en/ai-studio/text-generation/api-ref/TextGeneration/completion.html",
+        "https://yandex.cloud/en/docs/yandexgpt/embeddings/api-ref/Embeddings/textEmbedding",
+        "https://yandex.cloud/en/docs/foundation-models/api-ref/authentication",
+        "https://yandex.cloud/en/docs/foundation-models/operations/embeddings/search"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-replicate",
+      "path": "packages/replicate",
+      "status": "alpha",
+      "categories": [
+        "llms",
+        "tools_and_toolkits"
+      ],
+      "providers": [
+        "Replicate"
+      ],
+      "tools": [
+        "replicate_prediction_create",
+        "replicate_official_model_prediction_create",
+        "replicate_deployment_prediction_create",
+        "replicate_prediction_get",
+        "replicate_prediction_cancel"
+      ],
+      "sources": [
+        "https://replicate.com/docs/reference/http/",
+        "https://replicate.com/docs/topics/predictions/create-a-prediction"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-ollama",
+      "path": "packages/ollama",
+      "status": "alpha",
+      "categories": [
+        "chat_models",
+        "llms",
+        "embedding_models"
+      ],
+      "providers": [
+        "Ollama"
+      ],
+      "tools": [
+        "ollama_chat",
+        "ollama_generate",
+        "ollama_embed"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-composio",
+      "path": "packages/composio",
+      "status": "alpha",
+      "categories": [
+        "tools_and_toolkits"
+      ],
+      "providers": [
+        "Composio"
+      ],
+      "tools": [
+        "composio_tools_list",
+        "composio_tool_get",
+        "composio_tool_execute",
+        "composio_proxy_execute"
+      ],
+      "sources": [
+        "https://docs.composio.dev/reference/api-reference/tools",
+        "https://docs.composio.dev/docs/proxy-execute"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-finance",
+      "path": "packages/finance",
+      "status": "alpha",
+      "categories": [
+        "tools_and_toolkits"
+      ],
+      "providers": [
+        "Alpha Vantage",
+        "Polygon.io",
+        "Google Finance"
+      ],
+      "tools": [
+        "alpha_vantage_exchange_rate",
+        "alpha_vantage_time_series_daily",
+        "alpha_vantage_time_series_weekly",
+        "alpha_vantage_quote",
+        "alpha_vantage_symbol_search",
+        "alpha_vantage_news_sentiment",
+        "alpha_vantage_top_gainers_losers",
+        "polygon_aggregates",
+        "polygon_last_quote",
+        "polygon_ticker_news",
+        "polygon_financials",
+        "google_finance_search",
+        "google_finance_markets"
+      ],
+      "sources": [
+        "https://www.alphavantage.co/documentation/",
+        "https://polygon.io/docs/rest/stocks/trades-quotes/quotes/",
+        "https://polygon.io/docs/rest/stocks/news",
+        "https://polygon.io/blog/new-stock-financials-api/",
+        "https://serpapi.com/google-finance-api",
+        "https://serpapi.com/google-finance-markets"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-web",
+      "path": "packages/web",
+      "status": "alpha",
+      "categories": [
+        "tools_and_toolkits",
+        "document_loaders"
+      ],
+      "providers": [
+        "Tavily",
+        "Exa",
+        "Firecrawl",
+        "Brave Search",
+        "Bing Web Search",
+        "Perplexity Search",
+        "Mojeek Search",
+        "Parallel Search",
+        "Parallel Extract",
+        "Nimble Search",
+        "Google Custom Search",
+        "Google Serper",
+        "Jina Search",
+        "Linkup Search",
+        "Google Scholar",
+        "Google Trends",
+        "Google Jobs",
+        "arXiv",
+        "Semantic Scholar",
+        "PubMed",
+        "OpenWeatherMap",
+        "NASA",
+        "TMDB",
+        "SerpApi",
+        "SearchApi",
+        "DuckDuckGo",
+        "Wikipedia",
+        "StackExchange",
+        "WolframAlpha",
+        "SearXNG",
+        "You.com",
+        "DataForSEO",
+        "Dappier",
+        "Valyu",
+        "Decodo"
+      ],
+      "tools": [
+        "tavily_search",
+        "tavily_extract",
+        "tavily_crawl",
+        "tavily_map",
+        "exa_search",
+        "firecrawl_scrape",
+        "brave_search",
+        "bing_web_search",
+        "perplexity_search",
+        "mojeek_search",
+        "parallel_search",
+        "parallel_extract",
+        "nimble_search",
+        "google_custom_search",
+        "google_serper_search",
+        "jina_search",
+        "linkup_search",
+        "google_scholar_search",
+        "google_trends_search",
+        "google_jobs_search",
+        "arxiv_search",
+        "semantic_scholar_paper_search",
+        "semantic_scholar_paper_get",
+        "pubmed_search",
+        "openweathermap_current_weather",
+        "openweathermap_forecast",
+        "nasa_apod",
+        "nasa_mars_rover_photos",
+        "tmdb_movie_search",
+        "tmdb_movie_details",
+        "serpapi_search",
+        "searchapi_search",
+        "duckduckgo_instant_answer",
+        "wikipedia_search",
+        "wikipedia_page_summary",
+        "stackexchange_search",
+        "wolfram_alpha_query",
+        "searxng_search",
+        "you_com_search",
+        "dataforseo_serp_search",
+        "dataforseo_keyword_suggestions",
+        "dappier_real_time_search",
+        "valyu_search",
+        "decodo_scrape"
+      ],
+      "sources": [
+        "https://learn.microsoft.com/en-us/bing/search-apis/bing-web-search/reference/endpoints",
+        "https://learn.microsoft.com/en-us/bing/search-apis/bing-web-search/reference/query-parameters",
+        "https://learn.microsoft.com/en-us/bing/search-apis/bing-web-search/reference/headers",
+        "https://perplexity.mintlify.app/docs/search/quickstart",
+        "https://perplexity.mintlify.app/api-reference/search-post",
+        "https://www.mojeek.com/support/api/search/quickstart.html",
+        "https://www.mojeek.com/support/api/search/request_parameters.html",
+        "https://www.mojeek.com/support/api/search/json_response.html",
+        "https://docs.parallel.ai/search/search-quickstart",
+        "https://docs.parallel.ai/api-reference/search/search",
+        "https://docs.parallel.ai/extract/extract-quickstart",
+        "https://docs.parallel.ai/api-reference/extract/extract",
+        "https://docs.parallel.ai/extract/advanced-extract-settings",
+        "https://docs.nimbleway.com/api-reference/search/search",
+        "https://docs.nimbleway.com/nimble-sdk/search-api",
+        "https://serper.dev/",
+        "https://jina.ai/en-US/reader/",
+        "https://docs.linkup.so/pages/documentation/endpoints/search/reference",
+        "https://serpapi.com/google-scholar-api",
+        "https://serpapi.com/google-trends-api",
+        "https://serpapi.com/google-jobs-api",
+        "https://info.arxiv.org/help/api/user-manual.html",
+        "https://www.semanticscholar.org/product/api",
+        "https://www.semanticscholar.org/product/api/tutorial",
+        "https://www.ncbi.nlm.nih.gov/books/NBK25499/",
+        "https://www.nlm.nih.gov/dataguide/eutilities/utilities.html",
+        "https://openweathermap.org/current",
+        "https://openweathermap.org/forecast5",
+        "https://api.nasa.gov/",
+        "https://github.com/nasa/apod-api",
+        "https://developer.themoviedb.org/docs/search-and-query-for-details",
+        "https://developer.themoviedb.org/docs/authentication-application",
+        "https://docs.dataforseo.com/v3/serp-endpoints/",
+        "https://docs.dataforseo.com/v3/dataforseo_labs-google-keyword_suggestions-live/",
+        "https://docs.dappier.com/api-reference/endpoint/real-time-search",
+        "https://docs.valyu.ai/api-reference/endpoint/search",
+        "https://decodo.com/scraping/web"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-github",
+      "path": "packages/github",
+      "status": "alpha",
+      "categories": [
+        "tools_and_toolkits",
+        "document_loaders"
+      ],
+      "providers": [
+        "GitHub"
+      ],
+      "tools": [
+        "github_get_repo",
+        "github_repo_issues_list",
+        "github_issue_get",
+        "github_issue_create",
+        "github_search_issues",
+        "github_search_code",
+        "github_create_issue_comment",
+        "github_pull_requests_list",
+        "github_pull_request_get",
+        "github_pull_request_create",
+        "github_pull_request_files_list",
+        "github_branches_list",
+        "github_branch_create",
+        "github_file_contents_get",
+        "github_file_create_or_update",
+        "github_file_delete"
+      ],
+      "sources": [
+        "https://docs.github.com/en/rest/issues",
+        "https://docs.github.com/en/rest/pulls/pulls",
+        "https://docs.github.com/en/rest/repos/contents",
+        "https://docs.github.com/en/rest/branches",
+        "https://docs.github.com/en/rest/git/refs"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-gitlab",
+      "path": "packages/gitlab",
+      "status": "alpha",
+      "categories": [
+        "tools_and_toolkits",
+        "document_loaders"
+      ],
+      "providers": [
+        "GitLab"
+      ],
+      "tools": [
+        "gitlab_search",
+        "gitlab_project_issues_list",
+        "gitlab_issue_create",
+        "gitlab_project_merge_requests_list",
+        "gitlab_merge_request_create",
+        "gitlab_note_create",
+        "gitlab_branch_create",
+        "gitlab_repository_file_get",
+        "gitlab_repository_file_create",
+        "gitlab_repository_file_update"
+      ],
+      "sources": [
+        "https://docs.gitlab.com/api/search/",
+        "https://docs.gitlab.com/api/issues/",
+        "https://docs.gitlab.com/api/merge_requests/",
+        "https://docs.gitlab.com/api/notes/",
+        "https://docs.gitlab.com/api/repository_files/",
+        "https://docs.gitlab.com/ee/api/branches"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-jira",
+      "path": "packages/jira",
+      "status": "alpha",
+      "categories": [
+        "tools_and_toolkits",
+        "document_loaders"
+      ],
+      "providers": [
+        "Jira"
+      ],
+      "tools": [
+        "jira_jql_search",
+        "jira_issue_get",
+        "jira_issue_create",
+        "jira_issue_comment_add",
+        "jira_issue_transition"
+      ],
+      "sources": [
+        "https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-issue-search/",
+        "https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-issues/",
+        "https://developer.atlassian.com/cloud/jira/platform/rest/v2/api-group-issue-comments/"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-confluence",
+      "path": "packages/confluence",
+      "status": "alpha",
+      "categories": [
+        "tools_and_toolkits",
+        "document_loaders"
+      ],
+      "providers": [
+        "Confluence"
+      ],
+      "tools": [
+        "confluence_pages_list",
+        "confluence_page_get",
+        "confluence_page_create",
+        "confluence_page_update"
+      ],
+      "sources": [
+        "https://developer.atlassian.com/cloud/confluence/rest/v2/api-group-page/"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-notion",
+      "path": "packages/notion",
+      "status": "alpha",
+      "categories": [
+        "tools_and_toolkits",
+        "document_loaders"
+      ],
+      "providers": [
+        "Notion"
+      ],
+      "tools": [
+        "notion_search",
+        "notion_page_get",
+        "notion_page_create",
+        "notion_page_update",
+        "notion_block_children_list",
+        "notion_block_children_append"
+      ],
+      "sources": [
+        "https://developers.notion.com/reference/post-search",
+        "https://developers.notion.com/reference/retrieve-a-page",
+        "https://developers.notion.com/reference/post-page",
+        "https://developers.notion.com/reference/patch-page",
+        "https://developers.notion.com/reference/get-block-children",
+        "https://developers.notion.com/reference/patch-block-children"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-stripe",
+      "path": "packages/stripe",
+      "status": "alpha",
+      "categories": [
+        "tools_and_toolkits",
+        "document_loaders"
+      ],
+      "providers": [
+        "Stripe"
+      ],
+      "tools": [
+        "stripe_resource_list",
+        "stripe_customers_list",
+        "stripe_customer_get",
+        "stripe_customer_create",
+        "stripe_customer_update",
+        "stripe_payment_intent_create",
+        "stripe_checkout_session_create",
+        "stripe_checkout_session_get"
+      ],
+      "sources": [
+        "https://docs.stripe.com/api/customers/list",
+        "https://docs.stripe.com/api/customers/create",
+        "https://docs.stripe.com/api/customers/retrieve",
+        "https://docs.stripe.com/api/customers/update",
+        "https://docs.stripe.com/api/payment_intents/create",
+        "https://docs.stripe.com/api/checkout/sessions/create"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-shopify",
+      "path": "packages/shopify",
+      "status": "alpha",
+      "categories": [
+        "tools_and_toolkits",
+        "document_loaders"
+      ],
+      "providers": [
+        "Shopify"
+      ],
+      "tools": [
+        "shopify_admin_graphql",
+        "shopify_products_list",
+        "shopify_product_get",
+        "shopify_orders_list",
+        "shopify_order_get",
+        "shopify_customers_search",
+        "shopify_customer_get"
+      ],
+      "sources": [
+        "https://shopify.dev/docs/api/admin-graphql/latest",
+        "https://shopify.dev/docs/apps/build/authentication-authorization/access-tokens/authorization-code-grant",
+        "https://shopify.dev/docs/api/admin-rest/latest",
+        "https://shopify.dev/docs/api/admin-rest/latest/resources/product",
+        "https://shopify.dev/docs/api/admin-rest/latest/resources/order",
+        "https://shopify.dev/docs/api/admin-rest/latest/resources/customer"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-salesforce",
+      "path": "packages/salesforce",
+      "status": "alpha",
+      "categories": [
+        "tools_and_toolkits",
+        "document_loaders"
+      ],
+      "providers": [
+        "Salesforce"
+      ],
+      "tools": [
+        "salesforce_soql_query",
+        "salesforce_sobjects_list",
+        "salesforce_sobject_describe",
+        "salesforce_sobject_record_get",
+        "salesforce_sobject_record_create",
+        "salesforce_sobject_record_update",
+        "salesforce_sobject_record_delete"
+      ],
+      "sources": [
+        "https://developer.salesforce.com/blogs/2024/04/accessing-object-data-with-salesforce-platform-apis",
+        "https://resources.docs.salesforce.com/latest/latest/en-us/sfdc/pdf/api_rest.pdf",
+        "https://developer.salesforce.com/blogs/2026/01/developers-guide-to-the-spring-26-release"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-servicenow",
+      "path": "packages/servicenow",
+      "status": "alpha",
+      "categories": [
+        "tools_and_toolkits",
+        "document_loaders"
+      ],
+      "providers": [
+        "ServiceNow"
+      ],
+      "tools": [
+        "servicenow_table_records_list",
+        "servicenow_table_record_get",
+        "servicenow_table_record_create",
+        "servicenow_table_record_update",
+        "servicenow_table_record_delete"
+      ],
+      "sources": [
+        "https://www.servicenow.com/docs/r/api-reference/rest-api-explorer/c_RESTAPI.html",
+        "https://developer.servicenow.com/dev.do?_escaped_fragment_=%2Flearn%2Fcourses%2Fxanadu%2Fapp_store_learnv2_rest_xanadu_rest_integrations%2Fapp_store_learnv2_rest_xanadu_inbound_rest_integrations%2Fapp_store_learnv2_rest_xanadu_exercise_prepare_and_send_an_api_request_to_the_table_api"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-typeform",
+      "path": "packages/typeform",
+      "status": "alpha",
+      "categories": [
+        "tools_and_toolkits",
+        "document_loaders"
+      ],
+      "providers": [
+        "Typeform"
+      ],
+      "tools": [
+        "typeform_forms_list",
+        "typeform_form_get",
+        "typeform_form_create",
+        "typeform_form_update",
+        "typeform_responses_list"
+      ],
+      "sources": [
+        "https://www.typeform.com/developers/get-started/personal-access-token/",
+        "https://www.typeform.com/developers/create/reference/retrieve-form/",
+        "https://www.typeform.com/developers/responses/reference/retrieve-responses/"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-slack",
+      "path": "packages/slack",
+      "status": "alpha",
+      "categories": [
+        "tools_and_toolkits",
+        "document_loaders"
+      ],
+      "providers": [
+        "Slack"
+      ],
+      "tools": [
+        "slack_post_message",
+        "slack_message_schedule",
+        "slack_conversations_list",
+        "slack_conversation_info",
+        "slack_conversation_history",
+        "slack_conversation_replies",
+        "slack_message_permalink_get",
+        "slack_user_info",
+        "slack_messages_search"
+      ],
+      "sources": [
+        "https://docs.slack.dev/apis/web-api",
+        "https://docs.slack.dev/reference/methods/conversations.list",
+        "https://api.slack.com/methods/chat.postMessage",
+        "https://api.slack.com/methods/conversations.history",
+        "https://api.slack.com/methods"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-zendesk",
+      "path": "packages/zendesk",
+      "status": "alpha",
+      "categories": [
+        "tools_and_toolkits",
+        "document_loaders"
+      ],
+      "providers": [
+        "Zendesk Support"
+      ],
+      "tools": [
+        "zendesk_search",
+        "zendesk_tickets_list",
+        "zendesk_ticket_get",
+        "zendesk_ticket_create",
+        "zendesk_ticket_update",
+        "zendesk_ticket_comments_list",
+        "zendesk_users_list",
+        "zendesk_user_create_or_update"
+      ],
+      "sources": [
+        "https://developer.zendesk.com/api-reference/ticketing/ticket-management/search/",
+        "https://developer.zendesk.com/api-reference/ticketing/tickets/tickets/",
+        "https://developer.zendesk.com/api-reference/ticketing/tickets/ticket_comments/",
+        "https://developer.zendesk.com/api-reference/ticketing/users/users/"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-hubspot",
+      "path": "packages/hubspot",
+      "status": "alpha",
+      "categories": [
+        "tools_and_toolkits",
+        "document_loaders"
+      ],
+      "providers": [
+        "HubSpot"
+      ],
+      "tools": [
+        "hubspot_crm_objects_list",
+        "hubspot_crm_objects_search",
+        "hubspot_crm_object_get",
+        "hubspot_crm_object_create",
+        "hubspot_crm_object_update",
+        "hubspot_crm_objects_batch_read",
+        "hubspot_crm_object_associate"
+      ],
+      "sources": [
+        "https://developers.hubspot.com/docs/api-reference/crm-companies-v3/guide",
+        "https://developers.hubspot.com/docs/api-reference/legacy/crm/objects/deals/guide",
+        "https://developers.hubspot.com/docs/api-reference/crm-tickets-v3/guide",
+        "https://developers.hubspot.com/docs/api-reference/crm-search-v3/search/post-crm-v3-objects-objectType-search"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-discord",
+      "path": "packages/discord",
+      "status": "alpha",
+      "categories": [
+        "tools_and_toolkits",
+        "document_loaders"
+      ],
+      "providers": [
+        "Discord"
+      ],
+      "tools": [
+        "discord_list_guilds",
+        "discord_list_guild_channels",
+        "discord_list_channel_messages",
+        "discord_get_channel_message",
+        "discord_create_channel_message"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-dropbox",
+      "path": "packages/dropbox",
+      "status": "alpha",
+      "categories": [
+        "tools_and_toolkits",
+        "document_loaders"
+      ],
+      "providers": [
+        "Dropbox"
+      ],
+      "tools": [
+        "dropbox_files_list_folder",
+        "dropbox_files_search",
+        "dropbox_temporary_link_get",
+        "dropbox_folder_create",
+        "dropbox_file_upload_text",
+        "dropbox_file_or_folder_delete",
+        "dropbox_file_or_folder_move"
+      ],
+      "sources": [
+        "https://developers.dropbox.com/oauth-guide",
+        "https://www.dropbox.com/developers/reference/migration-guide",
+        "https://dropbox.tech/developers/search-files-using-the-dropbox-api"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-trello",
+      "path": "packages/trello",
+      "status": "alpha",
+      "categories": [
+        "tools_and_toolkits"
+      ],
+      "providers": [
+        "Trello"
+      ],
+      "tools": [
+        "trello_member_boards_list",
+        "trello_board_lists_list",
+        "trello_board_cards_list",
+        "trello_card_create",
+        "trello_card_update",
+        "trello_card_comment_add"
+      ],
+      "sources": [
+        "https://developer.atlassian.com/cloud/trello/rest/api-group-members/",
+        "https://developer.atlassian.com/cloud/trello/rest/api-group-boards/",
+        "https://developer.atlassian.com/cloud/trello/rest/api-group-cards/"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-todoist",
+      "path": "packages/todoist",
+      "status": "alpha",
+      "categories": [
+        "tools_and_toolkits"
+      ],
+      "providers": [
+        "Todoist"
+      ],
+      "tools": [
+        "todoist_projects_list",
+        "todoist_tasks_list",
+        "todoist_task_get",
+        "todoist_task_create",
+        "todoist_task_update",
+        "todoist_task_close",
+        "todoist_task_reopen",
+        "todoist_comments_list",
+        "todoist_comment_create"
+      ],
+      "sources": [
+        "https://developer.todoist.com/rest/v2/",
+        "https://developer.todoist.com/api/v1/"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-linear",
+      "path": "packages/linear",
+      "status": "alpha",
+      "categories": [
+        "tools_and_toolkits"
+      ],
+      "providers": [
+        "Linear"
+      ],
+      "tools": [
+        "linear_graphql",
+        "linear_teams_list",
+        "linear_issue_get",
+        "linear_issue_create",
+        "linear_issue_update",
+        "linear_comment_create"
+      ],
+      "sources": [
+        "https://linear.app/developers/graphql",
+        "https://linear.app/developers/oauth-2-0-authentication",
+        "https://linear.app/developers/sdk-fetching-and-modifying-data"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-monday",
+      "path": "packages/monday",
+      "status": "alpha",
+      "categories": [
+        "tools_and_toolkits"
+      ],
+      "providers": [
+        "monday.com"
+      ],
+      "tools": [
+        "monday_graphql",
+        "monday_boards_list",
+        "monday_board_items_get",
+        "monday_item_create",
+        "monday_item_column_values_change",
+        "monday_update_create"
+      ],
+      "sources": [
+        "https://developer.monday.com/api-reference/docs/authentication",
+        "https://developer.monday.com/api-reference/docs/getting-started",
+        "https://developer.monday.com/api-reference/docs/introduction-to-graphql",
+        "https://developer.monday.com/api-reference/docs/change-item-column-values",
+        "https://developer.monday.com/api-reference/docs/platform-mcp-tools"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-pagerduty",
+      "path": "packages/pagerduty",
+      "status": "alpha",
+      "categories": [
+        "tools_and_toolkits"
+      ],
+      "providers": [
+        "PagerDuty"
+      ],
+      "tools": [
+        "pagerduty_incidents_list",
+        "pagerduty_incident_get",
+        "pagerduty_incident_update",
+        "pagerduty_incident_note_create",
+        "pagerduty_services_list",
+        "pagerduty_users_list",
+        "pagerduty_event_send"
+      ],
+      "sources": [
+        "https://support.pagerduty.com/main/docs/services-and-integrations",
+        "https://developer.pagerduty.com/api-reference/368ae3d938c9e-list-incidents",
+        "https://developer.pagerduty.com/docs/events-api-v2/overview/"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-twilio",
+      "path": "packages/twilio",
+      "status": "alpha",
+      "categories": [
+        "tools_and_toolkits"
+      ],
+      "providers": [
+        "Twilio"
+      ],
+      "tools": [
+        "twilio_message_send",
+        "twilio_messages_list",
+        "twilio_message_get",
+        "twilio_call_create",
+        "twilio_calls_list",
+        "twilio_available_phone_numbers_search"
+      ],
+      "sources": [
+        "https://www.twilio.com/docs/usage/requests-to-twilio",
+        "https://www.twilio.com/docs/messaging/api/message-resource",
+        "https://www.twilio.com/docs/voice/api/call-resource",
+        "https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-sendgrid",
+      "path": "packages/sendgrid",
+      "status": "alpha",
+      "categories": [
+        "tools_and_toolkits"
+      ],
+      "providers": [
+        "Twilio SendGrid"
+      ],
+      "tools": [
+        "sendgrid_mail_send",
+        "sendgrid_templates_list",
+        "sendgrid_contacts_upsert",
+        "sendgrid_contacts_search_emails",
+        "sendgrid_global_suppression_get",
+        "sendgrid_global_suppressions_add"
+      ],
+      "sources": [
+        "https://www.twilio.com/docs/sendgrid/api-reference/mail-send",
+        "https://www.twilio.com/docs/sendgrid/api-reference/mail-send/mail-send",
+        "https://www.twilio.com/docs/sendgrid/api-reference/contacts/add-or-update-a-contact",
+        "https://www.twilio.com/docs/sendgrid/api-reference/contacts/search-contacts-by-email",
+        "https://www.twilio.com/docs/sendgrid/api-reference/suppressions-global-suppressions"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-asana",
+      "path": "packages/asana",
+      "status": "alpha",
+      "categories": [
+        "tools_and_toolkits"
+      ],
+      "providers": [
+        "Asana"
+      ],
+      "tools": [
+        "asana_projects_list",
+        "asana_project_tasks_list",
+        "asana_workspace_tasks_search",
+        "asana_task_get",
+        "asana_task_create",
+        "asana_task_update",
+        "asana_task_comment_add"
+      ],
+      "sources": [
+        "https://developers.asana.com/docs/quick-start",
+        "https://developers.asana.com/reference/getprojects",
+        "https://developers.asana.com/reference/gettasksforproject",
+        "https://developers.asana.com/reference/searchtasksforworkspace",
+        "https://developers.asana.com/reference/gettask",
+        "https://developers.asana.com/reference/createtask",
+        "https://developers.asana.com/reference/updatetask",
+        "https://developers.asana.com/reference/createstoryfortask"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-airtable",
+      "path": "packages/airtable",
+      "status": "alpha",
+      "categories": [
+        "tools_and_toolkits"
+      ],
+      "providers": [
+        "Airtable"
+      ],
+      "tools": [
+        "airtable_records_list",
+        "airtable_record_get",
+        "airtable_records_create",
+        "airtable_records_update",
+        "airtable_record_delete"
+      ],
+      "sources": [
+        "https://airtable.com/developers/web/api/list-records",
+        "https://airtable.com/developers/web/api/get-record",
+        "https://airtable.com/developers/web/api/create-records",
+        "https://airtable.com/developers/web/api/update-records",
+        "https://airtable.com/developers/web/api/delete-record",
+        "https://support.airtable.com/docs/getting-started-with-airtables-web-api"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-clicksend",
+      "path": "packages/clicksend",
+      "status": "alpha",
+      "categories": [
+        "tools_and_toolkits"
+      ],
+      "providers": [
+        "ClickSend"
+      ],
+      "tools": [
+        "clicksend_sms_send",
+        "clicksend_voice_send",
+        "clicksend_email_send"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-elevenlabs",
+      "path": "packages/elevenlabs",
+      "status": "alpha",
+      "categories": [
+        "tools_and_toolkits"
+      ],
+      "providers": [
+        "ElevenLabs"
+      ],
+      "tools": [
+        "elevenlabs_text_to_speech",
+        "elevenlabs_voices_list"
+      ],
+      "sources": [
+        "https://elevenlabs.io/docs/api-reference/text-to-speech/convert",
+        "https://elevenlabs.io/docs/api-reference/voices/search"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-jigsawstack",
+      "path": "packages/jigsawstack",
+      "status": "alpha",
+      "categories": [
+        "tools_and_toolkits",
+        "document_loaders"
+      ],
+      "providers": [
+        "JigsawStack"
+      ],
+      "tools": [
+        "jigsawstack_ai_search",
+        "jigsawstack_ai_scrape",
+        "jigsawstack_vocr",
+        "jigsawstack_speech_to_text",
+        "jigsawstack_text_to_sql"
+      ],
+      "sources": [
+        "https://jigsawstack.com/docs/api-reference/web/ai-search",
+        "https://jigsawstack.com/docs/api-reference/ai/vocr",
+        "https://jigsawstack.com/docs/api-reference/ai/speech-to-text",
+        "https://jigsawstack.com/docs/api-reference/ai/text-to-sql"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-vectorstores",
+      "path": "packages/vectorstores",
+      "status": "alpha",
+      "categories": [
+        "vector_stores",
+        "embedding_models",
+        "retrievers"
+      ],
+      "providers": [
+        "Pinecone",
+        "Qdrant",
+        "Weaviate",
+        "Milvus",
+        "Chroma",
+        "MongoDB Atlas Vector Search",
+        "Upstash Vector",
+        "Cloudflare Vectorize",
+        "Azure AI Search",
+        "Azion EdgeSQL",
+        "Azure Cosmos DB for NoSQL",
+        "Elasticsearch",
+        "OpenSearch",
+        "ClickHouse",
+        "turbopuffer",
+        "Rockset",
+        "Typesense",
+        "Supabase",
+        "Astra DB",
+        "Vectara",
+        "Xata",
+        "Couchbase Search",
+        "Couchbase Query",
+        "Meilisearch",
+        "Vespa"
+      ],
+      "tools": [
+        "pinecone_upsert",
+        "pinecone_query",
+        "pinecone_embeddings_create",
+        "pinecone_rerank",
+        "qdrant_upsert",
+        "qdrant_search",
+        "weaviate_batch_objects",
+        "weaviate_graphql",
+        "milvus_insert",
+        "milvus_search",
+        "chroma_upsert",
+        "chroma_query",
+        "mongodb_atlas_vector_search",
+        "upstash_vector_upsert",
+        "upstash_vector_query",
+        "cloudflare_vectorize_upsert",
+        "cloudflare_vectorize_query",
+        "azure_ai_search_upload",
+        "azure_ai_search_vector_search",
+        "azion_edgesql_vectors_add",
+        "azion_edgesql_vector_search",
+        "azion_edgesql_delete",
+        "azure_cosmosdb_nosql_document_upsert",
+        "azure_cosmosdb_nosql_query",
+        "azure_cosmosdb_nosql_document_delete",
+        "elasticsearch_index_document",
+        "elasticsearch_knn_search",
+        "opensearch_index_document",
+        "opensearch_knn_search",
+        "clickhouse_insert",
+        "clickhouse_vector_search",
+        "clickhouse_delete",
+        "turbopuffer_write",
+        "turbopuffer_query",
+        "rockset_query",
+        "rockset_documents_add",
+        "rockset_documents_delete",
+        "typesense_documents_import",
+        "typesense_vector_search",
+        "supabase_vector_upsert",
+        "supabase_vector_match",
+        "astra_db_insert_many",
+        "astra_db_find",
+        "vectara_document_index",
+        "vectara_corpus_query",
+        "xata_vectors_add",
+        "xata_vector_search",
+        "couchbase_search_query",
+        "couchbase_query_execute",
+        "meilisearch_documents_add",
+        "meilisearch_search",
+        "vespa_document_put",
+        "vespa_query"
+      ],
+      "sources": [
+        "https://docs.pinecone.io/reference/api/2025-04/inference/generate-embeddings",
+        "https://docs.pinecone.io/reference/api/2025-04/inference/rerank",
+        "https://turbopuffer.com/docs/auth",
+        "https://turbopuffer.com/docs/regions",
+        "https://turbopuffer.com/docs/write",
+        "https://turbopuffer.com/docs/query",
+        "https://www.postman.com/api-evangelist/workspace/rockset-api/documentation/35240-97c6871f-8a54-42bd-a4f1-a3ada62aa1b0",
+        "https://typesense.org/docs/30.2/api/vector-search.html",
+        "https://typesense.rest/",
+        "https://clickhouse.com/docs/en/interfaces/http",
+        "https://clickhouse.com/docs/en/sql-reference/formats",
+        "https://clickhouse.com/blog/vector-search-clickhouse-p2",
+        "https://www.azion.com/en/documentation/products/store/sql-database/",
+        "https://www.azion.com/en/documentation/products/store/sql-database/vector-search/",
+        "https://learn.microsoft.com/en-us/rest/api/cosmos-db/query-documents",
+        "https://learn.microsoft.com/en-us/rest/api/cosmos-db/create-a-document",
+        "https://learn.microsoft.com/en-us/rest/api/cosmos-db/delete-a-document",
+        "https://supabase.com/docs/guides/ai/vector-columns",
+        "https://supabase.com/docs/guides/ai/semantic-search",
+        "https://docs.datastax.com/en/astra-db-serverless/api-reference/document-methods/insert-many.html",
+        "https://docs.datastax.com/en/astra-db-serverless/api-reference/document-methods/find-many.html",
+        "https://docs.datastax.com/en/astra-db-serverless/databases/vector-search.html",
+        "https://docs.vectara.com/docs/rest-api/vectara-rest-api-v-2",
+        "https://docs.vectara.com/docs/rest-api/create-corpus-document",
+        "https://docs.vectara.com/docs/rest-api/query-corpus",
+        "https://xata-py.readthedocs.io/en/latest/api.html",
+        "https://docs.couchbase.com/server/current/vector-search/run-vector-search-rest-api.html",
+        "https://docs.couchbase.com/server/current/search/simple-search-rest-api.html",
+        "https://docs.couchbase.com/server/current/n1ql-rest-query/index.html",
+        "https://www.meilisearch.com/docs/reference/api/documents/add-or-replace-documents",
+        "https://www.meilisearch.com/docs/reference/api/search",
+        "https://docs.vespa.ai/en/reference/document-v1-api-reference.html",
+        "https://docs.vespa.ai/en/query-api.html"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-retrievers",
+      "path": "packages/retrievers",
+      "status": "alpha",
+      "categories": [
+        "retrievers"
+      ],
+      "providers": [
+        "tool-composed",
+        "HyDE",
+        "BM25",
+        "time-weighted",
+        "rerank composer",
+        "Alchemyst AI",
+        "Azion EdgeSQL",
+        "Dria",
+        "Chaindesk",
+        "ChatGPT Retrieval Plugin",
+        "Dappier AI Recommendations",
+        "Valyu Search",
+        "Supabase Hybrid Search",
+        "Metal",
+        "Brave Search",
+        "Bing Web Search",
+        "Google Serper",
+        "SerpApi",
+        "Perplexity Search",
+        "Google Scholar",
+        "Semantic Scholar",
+        "WolframAlpha",
+        "DuckDuckGo Instant Answer",
+        "SearXNG",
+        "StackExchange",
+        "You.com",
+        "Linkup Search",
+        "Mojeek Search",
+        "Parallel Search",
+        "Nimble Search",
+        "PubMed",
+        "Wikipedia",
+        "arXiv",
+        "Tavily",
+        "Exa",
+        "Vespa",
+        "Meilisearch",
+        "Zep open source",
+        "Zep Cloud",
+        "AWS Bedrock Knowledge Bases",
+        "Amazon Kendra"
+      ],
+      "tools": [
+        "vector_similarity_retrieve",
+        "hyde_retrieve",
+        "bm25_retrieve",
+        "time_weighted_retrieve",
+        "rerank_documents",
+        "alchemyst_context_retrieve",
+        "azion_edgesql_retrieve",
+        "dria_retrieve",
+        "chaindesk_retrieve",
+        "chatgpt_plugin_retrieve",
+        "dappier_ai_recommendations_retrieve",
+        "valyu_search_retrieve",
+        "supabase_hybrid_retrieve",
+        "metal_retrieve",
+        "brave_search_retrieve",
+        "bing_web_search_retrieve",
+        "google_serper_search_retrieve",
+        "serpapi_search_retrieve",
+        "perplexity_search_retrieve",
+        "google_scholar_search_retrieve",
+        "semantic_scholar_search_retrieve",
+        "wolfram_alpha_query_retrieve",
+        "duckduckgo_instant_answer_retrieve",
+        "searxng_search_retrieve",
+        "stackexchange_search_retrieve",
+        "you_com_search_retrieve",
+        "linkup_search_retrieve",
+        "mojeek_search_retrieve",
+        "parallel_search_retrieve",
+        "nimble_search_retrieve",
+        "pubmed_search_retrieve",
+        "wikipedia_search_retrieve",
+        "arxiv_search_retrieve",
+        "tavily_search_retrieve",
+        "exa_search_retrieve",
+        "vespa_retrieve",
+        "meilisearch_retrieve",
+        "zep_memory_retrieve",
+        "zep_cloud_graph_retrieve",
+        "bedrock_knowledge_base_retrieve",
+        "amazon_kendra_retrieve",
+        "amazon_kendra_query_retrieve",
+        "format_documents"
+      ],
+      "sources": [
+        "https://getalchemystai.com/docs/api-reference/introduction",
+        "https://getalchemystai.com/docs/getting-started/quickstart",
+        "https://www.azion.com/en/documentation/products/store/edge-sql/",
+        "https://www.azion.com/en/documentation/products/store/sql-database/vector-search/",
+        "https://www.npmjs.com/package/dria",
+        "https://docs.chaindesk.ai/api-reference/endpoint/datastores/query",
+        "https://github.com/openai/chatgpt-retrieval-plugin",
+        "https://docs.dappier.com/api-reference/endpoint/ai-recommendations",
+        "https://docs.valyu.ai/api-reference/endpoint/search",
+        "https://docs.getmetal.io/rest-api/documents/search.md",
+        "https://docs.getmetal.io/rest-api/introduction.md",
+        "https://api-dashboard.search.brave.com/app/documentation/web-search/get-started",
+        "https://learn.microsoft.com/en-us/bing/search-apis/bing-web-search/reference/endpoints",
+        "https://learn.microsoft.com/en-us/bing/search-apis/bing-web-search/reference/query-parameters",
+        "https://serper.dev/",
+        "https://serpapi.com/search-api",
+        "https://perplexity.mintlify.app/docs/search/quickstart",
+        "https://perplexity.mintlify.app/api-reference/search-post",
+        "https://serpapi.com/google-scholar-api",
+        "https://serpapi.com/google-scholar-organic-results",
+        "https://www.semanticscholar.org/product/api/tutorial",
+        "https://products.wolframalpha.com/api/documentation/",
+        "https://duckduckgo.com/duckduckgo-help-pages/features/instant-answers-and-other-features",
+        "https://docs.searxng.org/dev/search_api.html",
+        "https://api.stackexchange.com/docs/advanced-search",
+        "https://you.com/docs/api-reference/search/v1-search",
+        "https://docs.linkup.so/pages/documentation/api-reference",
+        "https://www.mojeek.com/support/api/search/request_parameters.html",
+        "https://www.mojeek.com/support/api/search/json_response.html",
+        "https://docs.parallel.ai/api-reference/search/search",
+        "https://docs.nimbleway.com/api-reference/search/search",
+        "https://www.ncbi.nlm.nih.gov/books/NBK25499/",
+        "https://www.mediawiki.org/wiki/API:Search",
+        "https://www.mediawiki.org/wiki/API:REST_API/Reference/Page_summary",
+        "https://info.arxiv.org/help/api/user-manual.html",
+        "https://docs.tavily.com/api-reference/endpoint/search",
+        "https://exa.ai/docs/reference/search-api-guide-for-coding-agents",
+        "https://docs.vespa.ai/en/query-api.html",
+        "https://www.meilisearch.com/docs/reference/api/search",
+        "https://help.getzep.com/v2/searching",
+        "https://help.getzep.com/v3/sdk-reference/graph/search",
+        "https://help.getzep.com/v2/searching-the-graph",
+        "https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent-runtime_Retrieve.html",
+        "https://docs.aws.amazon.com/kendra/latest/APIReference/API_Retrieve.html",
+        "https://docs.aws.amazon.com/kendra/latest/APIReference/API_Query.html"
+      ]
+    },
+    {
+      "name": "@chidori/integrations-text",
+      "path": "packages/text",
+      "status": "alpha",
+      "categories": [
+        "text_splitters",
+        "document_transformers"
+      ],
+      "providers": [
+        "local"
+      ],
+      "tools": [
+        "text_split_documents",
+        "html_to_text_documents",
+        "html_readability_documents"
+      ],
+      "sources": []
+    },
+    {
+      "name": "@chidori/integrations-loaders",
+      "path": "packages/loaders",
+      "status": "alpha",
+      "categories": [
+        "document_loaders"
+      ],
+      "providers": [
+        "HTTP",
+        "Text",
+        "Markdown",
+        "Notion Markdown",
+        "IMSDB",
+        "College Confidential",
+        "Subtitles",
+        "YouTube",
+        "ChatGPT",
+        "Slack",
+        "Discord",
+        "GitHub",
+        "SerpApi",
+        "SearchApi",
+        "Salesforce",
+        "HubSpot",
+        "Stripe",
+        "Shopify",
+        "Zendesk Support",
+        "Typeform",
+        "ServiceNow",
+        "JSON",
+        "JSONL",
+        "CSV",
+        "RSS",
+        "Atom",
+        "HTML",
+        "Cheerio",
+        "Recursive URL",
+        "Sitemap",
+        "Notion",
+        "Google Drive",
+        "Google Cloud Storage",
+        "Azure Blob Storage",
+        "Amazon S3",
+        "Dropbox",
+        "Airtable",
+        "Figma",
+        "Jira",
+        "Confluence",
+        "Browserbase",
+        "Firecrawl",
+        "Parallel Extract",
+        "Spider",
+        "Apify",
+        "AssemblyAI",
+        "Sonix",
+        "Soniox",
+        "Hacker News",
+        "GitBook",
+        "Taskade",
+        "Supadata",
+        "iFixit",
+        "Parser API"
+      ],
+      "tools": [
+        "http_document_load",
+        "text_document_load",
+        "markdown_document_load",
+        "notion_markdown_export_load",
+        "imsdb_script_load",
+        "college_confidential_load",
+        "subtitle_document_load",
+        "youtube_transcript_load",
+        "chatgpt_export_load",
+        "slack_conversation_load",
+        "discord_channel_messages_load",
+        "github_repository_load",
+        "serpapi_search_load",
+        "searchapi_search_load",
+        "salesforce_soql_load",
+        "hubspot_crm_objects_load",
+        "stripe_resource_load",
+        "shopify_resource_load",
+        "zendesk_support_load",
+        "typeform_resource_load",
+        "servicenow_table_records_load",
+        "json_document_load",
+        "jsonl_document_load",
+        "csv_document_load",
+        "rss_feed_load",
+        "html_document_load",
+        "cheerio_web_load",
+        "recursive_url_load",
+        "sitemap_document_load",
+        "notion_blocks_load",
+        "google_drive_file_load",
+        "google_cloud_storage_object_load",
+        "azure_blob_file_load",
+        "aws_s3_object_load",
+        "dropbox_file_load",
+        "document_parse_api_load",
+        "airtable_records_load",
+        "figma_file_load",
+        "jira_issues_load",
+        "confluence_pages_load",
+        "browserbase_fetch_load",
+        "firecrawl_load",
+        "parallel_extract_load",
+        "spider_scrape_load",
+        "apify_dataset_items_load",
+        "assemblyai_transcript_load",
+        "sonix_transcript_load",
+        "soniox_transcript_load",
+        "hacker_news_item_load",
+        "gitbook_page_load",
+        "taskade_project_tasks_load",
+        "supadata_transcript_load",
+        "supadata_metadata_load",
+        "ifixit_guides_load",
+        "ifixit_guide_load",
+        "ifixit_wiki_load",
+        "ifixit_suggest_load",
+        "ifixit_document_load"
+      ],
+      "sources": [
+        "https://docs.slack.dev/reference/methods/conversations.history",
+        "https://docs.discord.com/developers/resources/message",
+        "https://docs.github.com/en/rest/repos/contents",
+        "https://resources.docs.salesforce.com/latest/latest/en-us/sfdc/pdf/api_rest.pdf",
+        "https://developers.hubspot.com/docs/api-reference/latest/crm/objects/objects/get-objects",
+        "https://docs.stripe.com/api/charges/list",
+        "https://docs.stripe.com/api/events",
+        "https://shopify.dev/docs/api/admin-rest/latest",
+        "https://shopify.dev/docs/api/admin-rest/latest/resources/order",
+        "https://developer.zendesk.com/api-reference/ticketing/ticket-management/search/",
+        "https://developer.zendesk.com/api-reference/ticketing/tickets/tickets/",
+        "https://developer.zendesk.com/api-reference/ticketing/users/users/",
+        "https://www.typeform.com/developers/responses/reference/retrieve-responses/",
+        "https://www.typeform.com/developers/responses/",
+        "https://www.servicenow.com/docs/r/api-reference/rest-api-explorer/c_RESTAPI.html",
+        "https://www.servicenow.com/docs/r/zurich/api-reference/rest-api-explorer/c_RESTAPI.html",
+        "https://www.rssboard.org/rss-specification",
+        "https://docs.cloud.google.com/storage/docs/json_api/v1/objects/get",
+        "https://learn.microsoft.com/en-us/rest/api/storageservices/get-blob",
+        "https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html",
+        "https://support.airtable.com/docs/getting-started-with-airtables-web-api",
+        "https://developers.figma.com/docs/rest-api/file-endpoints/",
+        "https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-issue-search/",
+        "https://developer.atlassian.com/cloud/confluence/rest/v2/api-group-page/",
+        "https://docs.browserbase.com/features/fetch",
+        "https://docs.parallel.ai/extract/extract-quickstart",
+        "https://docs.parallel.ai/api-reference/extract/extract",
+        "https://spider.cloud/",
+        "https://docs.apify.com/api/v2/dataset-items-get",
+        "https://www.assemblyai.com/docs/api-reference/transcripts/get",
+        "https://sonix.ai/docs/api",
+        "https://soniox.com/docs/api-reference/stt/transcriptions/create_transcription",
+        "https://soniox.com/docs/stt/async/async-transcription",
+        "https://github.com/HackerNews/API",
+        "https://gitbook.com/docs/developers/gitbook-api/api-reference/spaces/space-content",
+        "https://docs.taskade.com/docs/api-reference/projects",
+        "https://docs.supadata.ai/api-reference/endpoint/transcript/transcript",
+        "https://docs.supadata.ai/api-reference/endpoint/transcript/transcript-get",
+        "https://docs.supadata.ai/api-reference/endpoint/metadata/metadata",
+        "https://about.ifixit.com/api/2.0/doc/Guides",
+        "https://about.ifixit.com/api/2.0/doc/Wikis",
+        "https://about.ifixit.com/api/2.0/doc/Suggest",
+        "https://about.ifixit.com/api/2.0/doc/Documents"
+      ]
+    }
+  ],
+  "backlog": [
+    {
+      "priority": "P1",
+      "package": "@chidori/integrations-loaders",
+      "providers": [
+        "Native PDF",
+        "Native DOCX"
+      ],
+      "categories": [
+        "document_loaders"
+      ]
+    }
+  ]
+}

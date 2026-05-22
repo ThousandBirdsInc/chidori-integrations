@@ -1,0 +1,32 @@
+{
+  "name": "@chidori/integrations-core",
+  "version": "0.1.0",
+  "description": "Shared TypeScript primitives for Chidori integration packages.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "src",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -b",
+    "typecheck": "tsc -b"
+  },
+  "peerDependencies": {
+    "chidori": ">=3.0.0"
+  },
+  "peerDependenciesMeta": {
+    "chidori": {
+      "optional": true
+    }
+  }
+}
